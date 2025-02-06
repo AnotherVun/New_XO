@@ -1,12 +1,22 @@
+@use '../../styles/mixins';
+
 .board{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
 
-  button {
-    background: #f77676;
+  button{
+    @include mixins.button-color(rgb(141, 252, 159), rgb(117, 102, 59));
+    @include mixins.pulse(rgb(0, 0, 0));
+    transition: all 0.02s;
+
     &:hover{
-      background: #000;
+      @include mixins.button-color(rgb(82, 114, 87), rgb(240, 225, 186));
+    }
+
+    &:focus{
+      outline: none;
+      @include mixins.button-color(rgb(120, 255, 160), rgb(18, 229, 236));
     }
   }
 }

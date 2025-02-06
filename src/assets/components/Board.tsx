@@ -1,17 +1,19 @@
 import React from "react"
 import './Board.scss'
 
-interface BoardType {
+interface BoardProps {
   myArray: string[],
-  altArray: string[]
+  myClick: (index: number) => void
 }
 
-export const Board: React.FC<BoardType> = ({ myArray, altArray }) => {
+export const Board: React.FC<BoardProps> = ({ myArray, myClick }) => {
   return (
-  <div className="board">
-    {myArray.map((element, index) => <button className="Six" key={index}>{element}</button>)}
-    {altArray.map((element, index) => <button key={index}>{element}</button>)}
-  </div>
+    <div className="board">
+      {myArray.map((element, index) =>
+        <button className="Six" key={index} onClick={() => myClick(index)}>
+          {element}
+        </button>)}
+    </div>
 
   )
 }
